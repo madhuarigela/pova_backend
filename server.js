@@ -25,7 +25,7 @@ const globalLimiter = rateLimit({
     max: 100,
     message: { error: 'Too many requests, please try again later.' }
 });
-app.use(globalLimiter);
+// app.use(globalLimiter);
 
 // Routes
 const authRoutes = require('./routes/auth');
