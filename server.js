@@ -6,9 +6,7 @@ const rateLimit = require('express-rate-limit');
 require('dotenv').config();
 
 const app = express();
-console.log("Trust proxy is:", app.get("trust proxy"));
-app.set("trust proxy", true);
-console.log("Trust proxy is:", app.get("trust proxy"));
+
 app.use(express.json());
 
 // Security middleware
@@ -25,7 +23,7 @@ const globalLimiter = rateLimit({
     max: 100,
     message: { error: 'Too many requests, please try again later.' }
 });
-// app.use(globalLimiter);
+app.use(globalLimiter);
 
 // Routes
 const authRoutes = require('./routes/auth');
