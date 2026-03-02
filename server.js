@@ -7,8 +7,6 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(express.json());
-
 // Security middleware
 app.use(helmet());
 app.use(cors({
@@ -23,6 +21,7 @@ const globalLimiter = rateLimit({
     max: 100,
     message: { error: 'Too many requests, please try again later.' }
 });
+
 app.use(globalLimiter);
 
 // Routes
